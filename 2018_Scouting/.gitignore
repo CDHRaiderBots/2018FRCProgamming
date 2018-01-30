@@ -7,3 +7,7 @@
 /build
 /captures
 .externalNativeBuild
+/.idea/discord.xml
+.idea/dbnavigator.xml
+.idea/discord.xml
+.idea/vcs.xml
