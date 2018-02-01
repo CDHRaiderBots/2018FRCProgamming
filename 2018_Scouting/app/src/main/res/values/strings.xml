@@ -2,4 +2,9 @@
     <string name="app_name">2018 Scouting</string>
     <string name="edit_message">Enter team number</string>
     <string name="button_send">Start</string>
+    <string name="AutoBaseLineText">Base Line</string>
+    <string name="AutoCubeDepositText">Cube Deposit</string>
+    <string name="ClimbingTitleText">Climbing</string>
+    <string name="AutoTitleText">Auto</string>
+    <string name="ClimbingFauxBarTitleText">Faux Bar</string>
 </resources>
