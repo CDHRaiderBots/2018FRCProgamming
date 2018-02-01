@@ -9,5 +9,7 @@
 .externalNativeBuild
 /.idea/discord.xml
 .idea/dbnavigator.xml
-.idea/discord.xml
 .idea/vcs.xml
+/.idea/codeStyles/codeStyleConfig.xml
+/.idea/findbugs-idea.xml
+/.idea/kotlinc.xml
