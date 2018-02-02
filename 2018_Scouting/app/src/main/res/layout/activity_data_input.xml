@@ -14,5 +14,102 @@
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+    <!--TODO add back button and export button to toolbar-->
+
+    <LinearLayout
+        android:id="@+id/AutoData"
+        android:layout_width="match_parent"
+        android:layout_height="91dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="77dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <!--TODO fix so this is dynamic-->
+        <!--TODO switch linear layouts to constraints-->
+
+        <TextView
+            android:id="@+id/AutoTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/AutoTitleText"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+        <CheckBox
+            android:id="@+id/AutoBaseLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/AutoBaseLineText" />
+
+        <CheckBox
+            android:id="@+id/AutoCubeDeposit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/AutoCubeDepositText" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/PowercubeData"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AutoData">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ClimbingData"
+        android:layout_width="585dp"
+        android:layout_height="597dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PowercubeData">
+
+        <TextView
+            android:id="@+id/ClimbingTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ClimbingTitleText"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+        <TextView
+            android:id="@+id/ClimbingFauxBarTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ClimbingFauxBarTitleText" />
+
+        <NumberPicker
+            android:id="@+id/ClimbingFauxBarNumberPicker"
+            android:layout_width="64dp"
+            android:layout_height="96dp"
+            android:descendantFocusability="blocksDescendants"/>
+
+        <TextView
+            android:id="@+id/TimerTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Time" />
+
+        <ToggleButton
+            android:id="@+id/ClimbingTimerToggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ToggleButton"
+            android:textOff="Start"
+            android:textOn="Stop" />
+        <!--TODO add textview to show time-->
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
