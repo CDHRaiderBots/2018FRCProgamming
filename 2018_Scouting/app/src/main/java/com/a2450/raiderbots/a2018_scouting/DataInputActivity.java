@@ -12,14 +12,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.NumberPicker;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 
 public class DataInputActivity extends AppCompatActivity {
     Handler handler;
@@ -54,10 +48,12 @@ public class DataInputActivity extends AppCompatActivity {
             isTimerRunning = true;
             startTime = SystemClock.uptimeMillis();
             handler.postDelayed(runnable, 0);
+            Log.v("stopwatch","Stopwatch started");
         }
         else {
             handler.removeCallbacks(runnable);
             isTimerRunning = false;
+            Log.v("stopwatch","Stopwatch stopped");
         }
     }
     public Runnable runnable = new Runnable() {
@@ -76,14 +72,23 @@ public class DataInputActivity extends AppCompatActivity {
         }
         return false;
     }
-    public boolean isExternalStorageWritable() {
+    public boolean isExternalStorageReadable() {
         String state = Environment.getExternalStorageState();
-        if (Environment.MEDIA_MOUNTED.equals(state)) {
+        if (Environment.MEDIA_MOUNTED.equals(state) ||
+                Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
             return true;
         }
         return false;
     }
     public void export(View view){
+        String filename = teamNumber;
+        if (this.isExternalStorageWritable()) {
+            this.getDocumentStorageDir(filename);
+        }
+        else {
+            Log.v("exportFunction", "could not write to external storage - check if permission has been granted");
+        }
+        /*
         String sFileName = "TestName";
         String sBody = "O hai mark";
         try {
@@ -101,12 +106,17 @@ public class DataInputActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         finish();
+        */
     }
-    void createExternalStoragePublicText() {
-        File path = Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_DOCUMENTS);
-        File file = new File(path, "team" + teamNumber + ".txt");
+    public File getDocumentStorageDir(String filename){
+        File exportData = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), filename);
+        if (!exportData.mkdirs()) {
+            Log.v("exportFunction", "Directory not created");
+        }
+        return exportData;
+
     }
+
     /*
     TODO finish this based on https://developer.android.com/reference/android/os/Environment.html#getExternalStoragePublicDirectory(java.lang.String) and https://developer.android.com/training/data-storage/files.html
      */
