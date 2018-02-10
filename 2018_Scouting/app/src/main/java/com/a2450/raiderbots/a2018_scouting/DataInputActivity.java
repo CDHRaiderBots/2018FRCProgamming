@@ -86,7 +86,7 @@ public class DataInputActivity extends AppCompatActivity {
     }
     public void export(View view){
         Date currentTime = Calendar.getInstance().getTime();
-        String filename = teamNumber + currentTime;
+        String filename = teamNumber + " - " + currentTime;
         writeToFile(filename, "text");
         finish();
     }

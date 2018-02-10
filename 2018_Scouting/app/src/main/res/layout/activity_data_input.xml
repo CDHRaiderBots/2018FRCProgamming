@@ -122,7 +122,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="TextView"
+        android:text=" "
         android:textAppearance="@android:style/TextAppearance.Material.Large"
         app:layout_constraintBottom_toBottomOf="@+id/ClimbingTimerToggle"
         app:layout_constraintStart_toEndOf="@+id/ClimbingTimerToggle"
@@ -154,6 +154,134 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/ClimbingRadioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ClimbingTimerToggle">
+
+        <TextView
+            android:id="@+id/ClimbingInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:text="Climbed successfully?"
+            app:layout_constraintBottom_toBottomOf="@+id/ClimbingRadioGroup"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ClimbingRadioGroup" />
+
+        <RadioButton
+            android:id="@+id/SuccessfulClimb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:checked="false"
+            android:text="Yes"
+            app:layout_constraintStart_toEndOf="@+id/ClimbingInfo"
+            app:layout_constraintTop_toBottomOf="@+id/ClimbingTimerToggle" />
+
+        <RadioButton
+            android:id="@+id/FailedClimb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:text="No"
+            app:layout_constraintBottom_toBottomOf="@+id/SuccessfulClimb"
+            app:layout_constraintStart_toEndOf="@+id/SuccessfulClimb"
+            app:layout_constraintTop_toTopOf="@+id/SuccessfulClimb" />
+
+        <RadioButton
+            android:id="@+id/DidntClimb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:text="Did not try"
+            app:layout_constraintBottom_toBottomOf="@+id/SuccessfulClimb"
+            app:layout_constraintStart_toEndOf="@+id/FailedClimb"
+            app:layout_constraintTop_toTopOf="@+id/SuccessfulClimb" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/MiscTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Misc"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ClimbingRadioGroup" />
+
+    <RadioGroup
+        android:id="@+id/MalfunctionRadioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MiscTitle">
+
+        <TextView
+            android:id="@+id/MalfunctionTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Malfunction" />
+
+        <RadioButton
+            android:id="@+id/CompleteMalfunction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Total" />
+
+        <RadioButton
+            android:id="@+id/PartialMalfunction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Partial" />
+
+        <RadioButton
+            android:id="@+id/NoMalfunction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="None" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/MiscNotes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Notes"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MalfunctionRadioGroup" />
     <!--TODO make this button actually work as opposed to crashing the app like it does right now. -->
 
 </android.support.constraint.ConstraintLayout>
