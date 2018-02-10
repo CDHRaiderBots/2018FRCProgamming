@@ -14,6 +14,10 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.util.Calendar;
+import java.util.Date;
 
 public class DataInputActivity extends AppCompatActivity {
     Handler handler;
@@ -81,43 +85,48 @@ public class DataInputActivity extends AppCompatActivity {
         return false;
     }
     public void export(View view){
-        String filename = teamNumber;
-        if (this.isExternalStorageWritable()) {
-            this.getDocumentStorageDir(filename);
-        }
-        else {
-            Log.v("exportFunction", "could not write to external storage - check if permission has been granted");
-        }
-        /*
-        String sFileName = "TestName";
-        String sBody = "O hai mark";
-        try {
-            File root = new File(Environment.getExternalStorageDirectory(), "Notes");
-            if (!root.exists()) {
-                root.mkdirs();
-            }
-            File gpxfile = new File(root, sFileName);
-            FileWriter writer = new FileWriter(gpxfile);
-            writer.append(sBody);
-            writer.flush();
-            writer.close();
-            Toast.makeText(myContext, "Saved", Toast.LENGTH_SHORT).show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Date currentTime = Calendar.getInstance().getTime();
+        String filename = teamNumber + currentTime;
+        writeToFile(filename, "text");
         finish();
-        */
     }
-    public File getDocumentStorageDir(String filename){
-        File exportData = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), filename);
-        if (!exportData.mkdirs()) {
-            Log.v("exportFunction", "Directory not created");
+
+    public void writeToFile(String filename, String data)
+    {
+        // Get the directory for the user's public pictures directory.
+        final File path =
+                Environment.getExternalStoragePublicDirectory
+                        (
+                                //Environment.DIRECTORY_PICTURES
+                                Environment.DIRECTORY_DOCUMENTS + "/Scouting/"
+                        );
+
+        // Make sure the path directory exists.
+        if(!path.exists())
+        {
+            // Make it, if it doesn't exit
+            path.mkdirs();
         }
-        return exportData;
 
+        final File file = new File(path, filename + ".txt");
+
+        // Save your stream, don't forget to flush() it before closing it.
+
+        try
+        {
+            file.createNewFile();
+            FileOutputStream fOut = new FileOutputStream(file);
+            OutputStreamWriter myOutWriter = new OutputStreamWriter(fOut);
+            myOutWriter.append(data);
+
+            myOutWriter.close();
+
+            fOut.flush();
+            fOut.close();
+        }
+        catch (IOException e)
+        {
+            Log.e("Exception", "File write failed: " + e.toString());
+        }
     }
-
-    /*
-    TODO finish this based on https://developer.android.com/reference/android/os/Environment.html#getExternalStoragePublicDirectory(java.lang.String) and https://developer.android.com/training/data-storage/files.html
-     */
 }
