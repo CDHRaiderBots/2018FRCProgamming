@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.NumberPicker;
 import android.widget.TextView;
@@ -26,13 +28,16 @@ public class DataInputActivity extends AppCompatActivity {
     boolean isTimerRunning;
     Context myContext;
     String teamNumber;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_input);
-        Toolbar myToolbar = findViewById(R.id.my_toolbar);
-        setSupportActionBar(myToolbar);
+        //Toolbar myToolbar = findViewById(R.id.my_toolbar);
+        //setSupportActionBar(myToolbar);
+        toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);
         //get intent that launched activity, and extract the relevant string
         Intent intent = getIntent();
         String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
@@ -46,6 +51,29 @@ public class DataInputActivity extends AppCompatActivity {
         handler = new Handler();
         isTimerRunning = false;
         myContext = this;
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.Export) {
+            Date currentTime = Calendar.getInstance().getTime();
+            String filename = teamNumber + " - " + currentTime;
+            writeToFile(filename, "text");
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
     public void toggleStopwatch(View view) {
         if (isTimerRunning == false) {

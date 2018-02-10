@@ -7,6 +7,9 @@
     tools:context="com.a2450.raiderbots.a2018_scouting.MainActivity">
 
 
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar" />
     <android.support.v7.widget.Toolbar
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"

@@ -4,16 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.a2450.raiderbots.a2018_scouting.DataInputActivity">
+    tools:context="com.a2450.raiderbots.a2018_scouting.DataInputActivity"
+    >
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/my_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar" />
     <!--TODO add back button and export button to toolbar-->
 
     <TextView
@@ -282,6 +278,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MalfunctionRadioGroup" />
-    <!--TODO make this button actually work as opposed to crashing the app like it does right now. -->
 
 </android.support.constraint.ConstraintLayout>
