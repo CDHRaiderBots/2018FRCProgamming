@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.a2450.raiderbots.a2018_scouting.DataInputActivity"
-    >
+    tools:context="com.a2450.raiderbots.a2018_scouting.DataInputActivity">
 
     <include
         android:id="@+id/tool_bar"
@@ -52,9 +51,103 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AutoBaseLine" />
 
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/FieldDataContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AutoCubeDeposit">
+
+        <TextView
+            android:id="@+id/FieldDataTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Teleop"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/FieldImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="8dp"
+            android:adjustViewBounds="true"
+            android:cropToPadding="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/FieldDataTitle"
+            app:srcCompat="@mipmap/img_field" />
+
+        <Button
+            android:id="@+id/ScaleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Scale"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/FieldImage" />
+
+        <Button
+            android:id="@+id/BlueSwitchButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="Blue Switch"
+            app:layout_constraintBottom_toBottomOf="@+id/ScaleButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ScaleButton"
+            app:layout_constraintTop_toTopOf="@+id/ScaleButton"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/RedSwitchButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="Red Switch"
+            app:layout_constraintBottom_toBottomOf="@+id/ScaleButton"
+            app:layout_constraintEnd_toStartOf="@+id/ScaleButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ScaleButton" />
+
+        <CheckBox
+            android:id="@+id/PileCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Got cubes from pile"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PortalCheckbox" />
+
+        <CheckBox
+            android:id="@+id/PortalCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Got cubes from portal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ScaleButton" />
+
+    </android.support.constraint.ConstraintLayout>
+
     <TextView
         android:id="@+id/ClimbingTitle"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -62,8 +155,9 @@
         android:text="@string/ClimbingTitleText"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PowercubeData" />
+        app:layout_constraintTop_toBottomOf="@+id/FieldDataContainer" />
 
     <TextView
         android:id="@+id/ClimbingFauxBarTitle"
@@ -123,20 +217,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/ClimbingTimerToggle"
         app:layout_constraintStart_toEndOf="@+id/ClimbingTimerToggle"
         app:layout_constraintTop_toTopOf="@+id/ClimbingTimerToggle" />
-
-    <LinearLayout
-        android:id="@+id/PowercubeData"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AutoCubeDeposit">
-
-    </LinearLayout>
 
     <Button
         android:id="@+id/ExportButton"
