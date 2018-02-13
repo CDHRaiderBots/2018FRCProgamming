@@ -67,7 +67,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Teleop"
+            android:text="@string/WordTeleop"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -81,6 +81,7 @@
             android:layout_centerVertical="true"
             android:layout_marginTop="8dp"
             android:adjustViewBounds="true"
+            android:contentDescription="@string/frc_2018_field"
             android:cropToPadding="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -95,7 +96,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Scale"
+            android:text="@string/scale"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/FieldImage" />
@@ -106,7 +107,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:text="Blue Switch"
+            android:text="@string/blue_switch"
             app:layout_constraintBottom_toBottomOf="@+id/ScaleButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/ScaleButton"
@@ -119,7 +120,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:text="Red Switch"
+            android:text="@string/red_switch"
             app:layout_constraintBottom_toBottomOf="@+id/ScaleButton"
             app:layout_constraintEnd_toStartOf="@+id/ScaleButton"
             app:layout_constraintStart_toStartOf="parent"
@@ -130,7 +131,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Got cubes from pile"
+            android:text="@string/got_cubes_from_pile"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/PortalCheckbox" />
 
@@ -139,7 +140,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Got cubes from portal"
+            android:text="@string/got_cubes_from_portal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ScaleButton" />
 
@@ -188,7 +189,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Time"
+        android:text="@string/TimerDefaultText"
         app:layout_constraintBottom_toBottomOf="@+id/ClimbingTimerToggle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/ClimbingTimerToggle" />
@@ -199,9 +200,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:onClick="toggleStopwatch"
-        android:text="ToggleButton"
-        android:textOff="Start"
-        android:textOn="Stop"
+        android:textOff="@string/LiterallyJustTheWordStart"
+        android:textOn="@string/LiterallyJustTheWordStop"
         app:layout_constraintStart_toEndOf="@+id/TimerTitle"
         app:layout_constraintTop_toBottomOf="@+id/ClimbingFauxBarNumberPicker" />
 
@@ -212,7 +212,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text=" "
+        android:text="@string/LiterallyNothing"
         android:textAppearance="@android:style/TextAppearance.Material.Large"
         app:layout_constraintBottom_toBottomOf="@+id/ClimbingTimerToggle"
         app:layout_constraintStart_toEndOf="@+id/ClimbingTimerToggle"
@@ -226,7 +226,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:onClick="export"
-        android:text="Export"
+        android:text="@string/WordExport"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -248,7 +248,7 @@
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
             android:layout_weight="1"
-            android:text="Climbed successfully?"
+            android:text="@string/climbed_successfully"
             app:layout_constraintBottom_toBottomOf="@+id/ClimbingRadioGroup"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/ClimbingRadioGroup" />
@@ -261,7 +261,7 @@
             android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:checked="false"
-            android:text="Yes"
+            android:text="@string/LiterallyJustTheWordYes"
             app:layout_constraintStart_toEndOf="@+id/ClimbingInfo"
             app:layout_constraintTop_toBottomOf="@+id/ClimbingTimerToggle" />
 
@@ -273,7 +273,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_weight="1"
-            android:text="No"
+            android:text="@string/LiterallyJustTheWordNo"
             app:layout_constraintBottom_toBottomOf="@+id/SuccessfulClimb"
             app:layout_constraintStart_toEndOf="@+id/SuccessfulClimb"
             app:layout_constraintTop_toTopOf="@+id/SuccessfulClimb" />
@@ -286,7 +286,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_weight="1"
-            android:text="Did not try"
+            android:text="@string/did_not_try"
             app:layout_constraintBottom_toBottomOf="@+id/SuccessfulClimb"
             app:layout_constraintStart_toEndOf="@+id/FailedClimb"
             app:layout_constraintTop_toTopOf="@+id/SuccessfulClimb" />
@@ -300,7 +300,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Misc"
+        android:text="@string/MiscTitle"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -321,28 +321,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Malfunction" />
+            android:text="@string/WordMalfunction" />
 
         <RadioButton
             android:id="@+id/CompleteMalfunction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Total" />
+            android:text="@string/WordTotal" />
 
         <RadioButton
             android:id="@+id/PartialMalfunction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Partial" />
+            android:text="@string/WordPartial" />
 
         <RadioButton
             android:id="@+id/NoMalfunction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="None" />
+            android:text="@string/WordNone" />
     </RadioGroup>
 
     <EditText
@@ -353,7 +353,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Notes"
+        android:hint="@string/WordNotes"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
