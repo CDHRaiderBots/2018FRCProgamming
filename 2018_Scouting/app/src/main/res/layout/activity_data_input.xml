@@ -6,110 +6,410 @@
     android:layout_height="match_parent"
     tools:context="com.a2450.raiderbots.a2018_scouting.DataInputActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/my_toolbar"
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar" />
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-    <!--TODO add back button and export button to toolbar-->
-
-    <LinearLayout
-        android:id="@+id/AutoData"
-        android:layout_width="match_parent"
-        android:layout_height="91dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="77dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-        <!--TODO fix so this is dynamic-->
-        <!--TODO switch linear layouts to constraints-->
-
-        <TextView
-            android:id="@+id/AutoTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/AutoTitleText"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
-
-        <CheckBox
-            android:id="@+id/AutoBaseLine"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/AutoBaseLineText" />
-
-        <CheckBox
-            android:id="@+id/AutoCubeDeposit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/AutoCubeDepositText" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/PowercubeData"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AutoData">
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/ClimbingData"
-        android:layout_width="585dp"
-        android:layout_height="597dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:orientation="vertical"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PowercubeData">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/ClimbingTitle"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/ClimbingTitleText"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/ClimbingFauxBarTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/ClimbingFauxBarTitleText" />
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/AutoContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <NumberPicker
-            android:id="@+id/ClimbingFauxBarNumberPicker"
-            android:layout_width="64dp"
-            android:layout_height="96dp"
-            android:descendantFocusability="blocksDescendants"/>
+                <TextView
+                    android:id="@+id/AutoTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="64dp"
+                    android:text="@string/AutoTitleText"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/TimerTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Time" />
+                <CheckBox
+                    android:id="@+id/AutoBaseLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:onClick="onCheckBoxClick"
+                    android:text="@string/AutoBaseLineText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/AutoTitle" />
 
-        <ToggleButton
-            android:id="@+id/ClimbingTimerToggle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ToggleButton"
-            android:textOff="Start"
-            android:textOn="Stop" />
-        <!--TODO add textview to show time-->
-    </LinearLayout>
+                <CheckBox
+                    android:id="@+id/AutoCubeDeposit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:onClick="onCheckBoxClick"
+                    android:text="@string/AutoCubeDepositText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/AutoBaseLine" />
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/FieldDataContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/AutoCubeDeposit">
+
+                <TextView
+                    android:id="@+id/FieldDataTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/WordTeleop"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/ScaleButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:onClick="incrementBlocksScale"
+                    android:text="@string/scale"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/FieldDataTitle" />
+
+                <Button
+                    android:id="@+id/BlueSwitchButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:onClick="incrementBlocksBlue"
+                    android:text="@string/blue_switch"
+                    app:layout_constraintBottom_toBottomOf="@+id/ScaleButton"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/ScaleButton"
+                    app:layout_constraintTop_toTopOf="@+id/ScaleButton"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <Button
+                    android:id="@+id/RedSwitchButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:onClick="incrementBlocksRed"
+                    android:text="@string/red_switch"
+                    app:layout_constraintBottom_toBottomOf="@+id/ScaleButton"
+                    app:layout_constraintEnd_toStartOf="@+id/ScaleButton"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/ScaleButton" />
+
+                <CheckBox
+                    android:id="@+id/PortalCheckbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:onClick="onCheckBoxClick"
+                    android:text="@string/got_cubes_from_portal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ScaleButton" />
+
+                <CheckBox
+                    android:id="@+id/PileCheckbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:onClick="onCheckBoxClick"
+                    android:text="@string/got_cubes_from_pile"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/PortalCheckbox" />
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/ClimbingContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/ClimbingTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/ClimbingTitleText"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <RadioGroup
+                    android:id="@+id/FauxBarRadioGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ClimbingTitle">
+
+                    <TextView
+                        android:id="@+id/ClimbingFauxBarTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/ClimbingFauxBarTitleText"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="64dp" />
+
+                    <RadioButton
+                        android:id="@+id/HoldsZeroRobots"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="0" />
+
+                    <RadioButton
+                        android:id="@+id/HoldsOneRobot"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="1" />
+
+                    <RadioButton
+                        android:id="@+id/HoldsTwoRobots"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="2" />
+                </RadioGroup>
+
+                <TextView
+                    android:id="@+id/TimerTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/TimerDefaultText"
+                    app:layout_constraintBottom_toBottomOf="@+id/ClimbingTimerToggle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/ClimbingTimerToggle" />
+
+                <ToggleButton
+                    android:id="@+id/ClimbingTimerToggle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:onClick="toggleStopwatch"
+                    android:textOff="@string/LiterallyJustTheWordStart"
+                    android:textOn="@string/LiterallyJustTheWordStop"
+                    app:layout_constraintStart_toEndOf="@+id/TimerTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/FauxBarRadioGroup" />
+
+                <TextView
+                    android:id="@+id/TimerTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/LiterallyNothing"
+                    android:textAppearance="@android:style/TextAppearance.Material.Large"
+                    app:layout_constraintBottom_toBottomOf="@+id/ClimbingTimerToggle"
+                    app:layout_constraintStart_toEndOf="@+id/ClimbingTimerToggle"
+                    app:layout_constraintTop_toTopOf="@+id/ClimbingTimerToggle" />
+
+                <RadioGroup
+                    android:id="@+id/ClimbingRadioGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ClimbingTimerToggle">
+
+                    <TextView
+                        android:id="@+id/ClimbingInfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_weight="1"
+                        android:text="@string/climbed_successfully"
+                        app:layout_constraintBottom_toBottomOf="@+id/ClimbingRadioGroup"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/ClimbingRadioGroup" />
+
+                    <RadioButton
+                        android:id="@+id/SuccessfulClimb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_weight="1"
+                        android:checked="false"
+                        android:onClick="onRadioButtonClicked"
+                        android:text="@string/LiterallyJustTheWordYes"
+                        app:layout_constraintStart_toEndOf="@+id/ClimbingInfo"
+                        app:layout_constraintTop_toBottomOf="@+id/ClimbingTimerToggle" />
+
+                    <RadioButton
+                        android:id="@+id/FailedClimb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_weight="1"
+                        android:onClick="onRadioButtonClicked"
+                        android:text="@string/LiterallyJustTheWordNo"
+                        app:layout_constraintBottom_toBottomOf="@+id/SuccessfulClimb"
+                        app:layout_constraintStart_toEndOf="@+id/SuccessfulClimb"
+                        app:layout_constraintTop_toTopOf="@+id/SuccessfulClimb" />
+
+                    <RadioButton
+                        android:id="@+id/DidntClimb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_weight="1"
+                        android:onClick="onRadioButtonClicked"
+                        android:text="@string/did_not_try"
+                        app:layout_constraintBottom_toBottomOf="@+id/SuccessfulClimb"
+                        app:layout_constraintStart_toEndOf="@+id/FailedClimb"
+                        app:layout_constraintTop_toTopOf="@+id/SuccessfulClimb" />
+
+                </RadioGroup>
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/MiscContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/MiscTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/MiscTitle"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <RadioGroup
+                    android:id="@+id/MalfunctionRadioGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/MiscTitle">
+
+                    <TextView
+                        android:id="@+id/MalfunctionTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/WordMalfunction" />
+
+                    <RadioButton
+                        android:id="@+id/CompleteMalfunction"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:onClick="onRadioButtonClicked"
+                        android:text="@string/WordTotal" />
+
+                    <RadioButton
+                        android:id="@+id/PartialMalfunction"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:onClick="onRadioButtonClicked"
+                        android:text="@string/WordPartial" />
+
+                    <RadioButton
+                        android:id="@+id/NoMalfunction"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:onClick="onRadioButtonClicked"
+                        android:text="@string/WordNone" />
+                </RadioGroup>
+
+                <EditText
+                    android:id="@+id/MiscNotes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:ems="10"
+                    android:hint="@string/WordNotes"
+                    android:inputType="textMultiLine"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/MalfunctionRadioGroup" />
+
+            </android.support.constraint.ConstraintLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!--TODO add back button and export button to toolbar-->
+
+    <Button
+        android:id="@+id/ExportButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:onClick="export"
+        android:text="@string/WordExport"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
