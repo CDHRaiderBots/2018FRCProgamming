@@ -27,6 +27,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -34,7 +35,7 @@ public class DataInputActivity extends AppCompatActivity {
     Handler handler;
     long startTime, MillisecondTime, TimeBuff, UpdateTime = 0L ;
     TextView timerText;
-    boolean isTimerRunning;
+    Boolean isTimerRunning;
     Context myContext;
     String teamNumber;
     private Toolbar toolbar;
@@ -58,7 +59,7 @@ public class DataInputActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_input);
-        toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        toolbar = findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
         //get intent that launched activity, and extract the relevant string
         Intent intent = getIntent();
@@ -104,8 +105,11 @@ public class DataInputActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.Export) {
-            Date currentTime = Calendar.getInstance().getTime();
-            String filename = teamNumber + " - " + currentTime;
+            Date c = Calendar.getInstance().getTime();
+            System.out.println("Current time => " + c);
+            SimpleDateFormat df = new SimpleDateFormat("mmHH-dd-MM");
+            String formattedDate = df.format(c);
+            String filename = teamNumber + "-" + formattedDate;
             writeToFile(filename);
             finish();
         }
@@ -214,8 +218,13 @@ public class DataInputActivity extends AppCompatActivity {
         return false;
     }
     public void export(View view){
-        Date currentTime = Calendar.getInstance().getTime();
-        String filename = teamNumber + " - " + currentTime;
+        // SimpleDateFormat curFormater = new SimpleDateFormat("mmHHddMM");
+        // Date currentTime = Calendar.getInstance().getTime();
+        Date c = Calendar.getInstance().getTime();
+        System.out.println("Current time => " + c);
+        SimpleDateFormat df = new SimpleDateFormat("mmHH-dd-MM");
+        String formattedDate = df.format(c);
+        String filename = teamNumber + "-" + formattedDate;
         writeToFile(filename);
         finish();
     }
@@ -232,7 +241,7 @@ public class DataInputActivity extends AppCompatActivity {
                 Environment.getExternalStoragePublicDirectory
                         (
                                 //Environment.DIRECTORY_PICTURES
-                                Environment.DIRECTORY_DOCUMENTS + "/Scouting/"
+                                Environment.DIRECTORY_DOCUMENTS
                         );
 
         // Make sure the path directory exists.
@@ -242,7 +251,7 @@ public class DataInputActivity extends AppCompatActivity {
             path.mkdirs();
         }
 
-        final File file = new File(path, filename + ".txt");
+        final File file = new File(path, filename + ".csv");
 
         // Save your stream, don't forget to flush() it before closing it.
 
