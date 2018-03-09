@@ -1,3 +1,4 @@
+//noinspection AccidentalOctal
 apply plugin: 'com.android.application'
 
 android {
@@ -7,7 +8,7 @@ android {
         minSdkVersion 22
         targetSdkVersion 26
         versionCode 1
-        versionName "1.0"
+        versionName "0.1-preview"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

@@ -7,4 +7,26 @@
     <string name="ClimbingTitleText">Climbing</string>
     <string name="AutoTitleText">Auto</string>
     <string name="ClimbingFauxBarTitleText">Faux Bar</string>
+    <string name="TimerDefaultText">Time</string>
+    <string name="LiterallyJustTheWordStart">Start</string>
+    <string name="LiterallyJustTheWordStop">Stop</string>
+    <string name="LiterallyNothing" />
+    <string name="WordExport">Export</string>
+    <string name="climbed_successfully">Climbed successfully?</string>
+    <string name="LiterallyJustTheWordYes">Yes</string>
+    <string name="LiterallyJustTheWordNo">No</string>
+    <string name="did_not_try">Did not try</string>
+    <string name="MiscTitle">Misc</string>
+    <string name="WordMalfunction">Malfunction</string>
+    <string name="WordTotal">Total</string>
+    <string name="WordPartial">Partial</string>
+    <string name="WordNone">None</string>
+    <string name="WordNotes">Notes</string>
+    <string name="blue_switch">Blue Switch</string>
+    <string name="red_switch">Red Switch</string>
+    <string name="scale">Scale</string>
+    <string name="got_cubes_from_portal">Got cubes from portal</string>
+    <string name="got_cubes_from_pile">Got cubes from pile</string>
+    <string name="WordTeleop">Teleop</string>
+    <string name="frc_2018_field">FRC 2018 field</string>
 </resources>
